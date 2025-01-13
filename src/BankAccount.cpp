@@ -1,4 +1,4 @@
-#include "BankAccount.hpp"
+#include "../src/BankAccount.cpp"
 
 int addAccount(int id, BankAccount info) {
     account[id] = info;

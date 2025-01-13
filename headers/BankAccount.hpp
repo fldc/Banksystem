@@ -9,9 +9,6 @@ class Bank
 private:
     std::map <int, BankAccount> account;
 public:
-    Bank(/* args */);
-    ~Bank();
-
     int addAccount(int id, BankAccount info);
     BankAccount& getAccount(int id);
 };
