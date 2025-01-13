@@ -1,0 +1,29 @@
+# Files to ignore
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.log
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.dylib
+*.swp
+*.swo
+*.tmp
+*.bak
+*.~*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# LoveL files ;)
+build/
+run
+tests
