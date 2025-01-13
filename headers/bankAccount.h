@@ -1,3 +1,6 @@
+#ifndef BANKACCOUNT_H
+#define BANKACCOUNT_H
+
 class bankAccount {
     private: 
     int balance;
@@ -10,3 +13,5 @@ class bankAccount {
     void withdraw(int amount);
     int getBalance();
 };
+
+#endif
