@@ -13,31 +13,31 @@ bankAccount::bankAccount(int accountNumber)
     this->accountNumber = accountNumber;
 }
 
-// void bankAccount::deposit(int amount)
-// {
-//     if(amount == 0)
-//     {
-//         throw "Invalid amount";
-//     }
-//     balance += amount;
+void bankAccount::deposit(int amount)
+{
+    if(amount == 0)
+    {
+        throw "Invalid amount";
+    }
+    balance += amount;
 
-// }
+}
 
-// void bankAccount::withdraw(int amount)
-// {
-//     if (amount > balance)
-//     {
-//         throw "Insufficient funds";
-//     }
-//     else if(amount == 0)
-//     {
-//         throw "Invalid amount";
-//     }
-//     balance -= amount;
+void bankAccount::withdraw(int amount)
+{
+    if (amount > balance)
+    {
+        throw "Insufficient funds";
+    }
+    else if(amount == 0)
+    {
+        throw "Invalid amount";
+    }
+    balance -= amount;
 
-// }
+}
 
-// int bankAccount::getBalance()
-// {
-//     return balance;
-// }
+int bankAccount::getBalance()
+{
+    return balance;
+}
