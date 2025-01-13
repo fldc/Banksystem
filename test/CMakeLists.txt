@@ -4,7 +4,7 @@ project( banksystem-test LANGUAGES CXX )
 enable_testing()
 
 find_package( Catch2 REQUIRED )
-include_directories( headers ${Catch2_DIRS} )
+include_directories( ../headers ${Catch2_DIRS} )
 
 file( GLOB_RECURSE srcs ./**.cpp )
 add_executable( tests ${srcs} )
