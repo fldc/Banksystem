@@ -1,9 +1,9 @@
 #include "Bank.hpp"
 
-int addAccount(int id, bankAccount info) {
+int Bank::addAccount(int id, bankAccount info) {
     account[id] = info;
 }
 
-bankAccount& getAccount(int id) {
+bankAccount& Bank::getAccount(int id) {
     return account.at(id);
 }
