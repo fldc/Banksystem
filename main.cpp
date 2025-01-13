@@ -1,11 +1,12 @@
-#include <iostream>
-#include <thread>
 #include <chrono>
+#include <iostream>
 #include <random>
-#include "bankaccount.h"
-#include "bank.h"
+#include <thread>
 
-void client(Bank& bank, int clientid, int interations)
+#include "Bank.hpp"
+#include "bankAccount.h"
+
+void client(Bank& bank, int clientid, int iterations)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -60,6 +61,6 @@ int main()
     {
         t.join();
     }
-    
+
     return 0;
 }
