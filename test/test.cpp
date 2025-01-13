@@ -1,5 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
-#include "BankAccount.h" // Not yet implemented
+#include "bankAccount.h" // Not yet implemented
 
 TEST_CASE("BankAccount class", "[bankaccount],[class]")
 {
