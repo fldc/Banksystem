@@ -1,4 +1,4 @@
-#include "../header/bankAccount.h"
+#include "bankAccount.h"
 #include <iostream>
 
 
