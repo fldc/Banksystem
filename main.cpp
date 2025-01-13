@@ -17,27 +17,27 @@ void client(Bank& bank, int clientid, int iterations)
     // random transactions
     for (int i = 0; i < iterations; i++)
     {
-        int account = accountDist(gen);
+        int accountNumber = accountDist(gen);
         int amount  = amountDist(gen);
         int action  = actionDist(gen);
 
-        Bankaccount* account = bank.getAccount(account);
+        bankAccount account = bank.getAccount(accountNumber);
         if (account)
         {
             switch (action)
             {
                 case 1:
-                    std::cout << "Customer" << clientid << " Account" << account
+                    std::cout << "Customer" << clientid << " Account" << accountNumber
                               << " Deposit: " << amount << std::endl;
                     account->deposit(amount);
                     break;
                 case 2:
-                    std::cout << "Customer" << clientid << " Account" << account
+                    std::cout << "Customer" << clientid << " Account" << accountNumber
                               << " Withdraw: " << amount << std::endl;
                     account->withdraw(amount);
                     break;
                 case 3:
-                    std::cout << "Customer" << clientid << " Account" << account
+                    std::cout << "Customer" << clientid << " Account" << accountNumber
                               << " Balance: " << account->getBalance() << std::endl;
                     break;
             }
