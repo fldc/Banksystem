@@ -37,7 +37,7 @@ void client(Bank& bank, int clientid, int iterations)
                     account->withdraw(amount);
                     break;
                 case 3:
-                    std::cout << "Customer" clientid << " Account" << account
+                    std::cout << "Customer" << clientid << " Account" << account
                               << " Balance: " << account->getBalance() << std::endl;
                     break;
             }
