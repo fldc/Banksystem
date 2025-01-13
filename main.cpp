@@ -50,6 +50,12 @@ int main()
 {
     Bank bank;
 
+    // Create 5 accounts
+    for (int i = 1000; i < 1005; ++i)
+    {
+        bank.addAccount(i, 1000);
+    }
+
     std::vector<std::thread> threads;
     for (int i = 0; i < 10; ++i)
     {
