@@ -66,7 +66,8 @@ void client(Bank& bank, int clientid, int iterations)
                 break;
             }
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::uniform_int_distribution<int> waitTime(100, 3000);
+        std::this_thread::sleep_for(std::chrono::milliseconds(waitTime(gen)));
     }
 }
 
