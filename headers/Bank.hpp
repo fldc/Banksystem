@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <map>
+#include <mutex>
 #include "bankAccount.h"
 
 class Bank
@@ -10,6 +11,7 @@ class Bank
 private:
     // Ändrade från bankAccount till bankAccount* eftersom annars bygger inte programmet.
     std::map <int, bankAccount*> account;
+    std::mutex mapMtx;
 public:
     void addAccount(int id, bankAccount* info);
     bankAccount* getAccount(int id);

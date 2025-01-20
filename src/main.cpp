@@ -2,9 +2,12 @@
 #include <iostream>
 #include <random>
 #include <thread>
+#include <mutex>
 
 #include "Bank.hpp"
 #include "bankAccount.h"
+
+std::mutex mtx, printMtx;
 
 void client(Bank& bank, int clientid, int iterations)
 {
@@ -21,12 +24,20 @@ void client(Bank& bank, int clientid, int iterations)
         int amount  = amountDist(gen);
         int action  = actionDist(gen);
 
-        auto account = bank.getAccount(accountNumber);
+        bankAccount *account;
 
-        switch (action)
         {
+            std::lock_guard<std::mutex> lock(mtx);
+            account = bank.getAccount(accountNumber);
+        }
+
+        {
+            std::lock_guard<std::mutex> lock(printMtx);
+            switch (action)
+            {
             case 1:
-                std::cout << "Customer" << clientid << " Account" << accountNumber
+                
+                std::cout << "Customer" << clientid << " Account " << accountNumber
                             << " Deposit: " << amount << std::endl;
                 try {
                     account->deposit(amount);
@@ -35,7 +46,7 @@ void client(Bank& bank, int clientid, int iterations)
                 }
                 break;
             case 2:
-                std::cout << "Customer" << clientid << " Account" << accountNumber
+                std::cout << "Customer" << clientid << " Account " << accountNumber
                             << " Withdraw: " << amount << std::endl;
                 try {
                     account->withdraw(amount);
@@ -44,9 +55,10 @@ void client(Bank& bank, int clientid, int iterations)
                 }
                 break;
             case 3:
-                std::cout << "Customer" << clientid << " Account" << accountNumber
+                std::cout << "Customer" << clientid << " Account " << accountNumber
                             << " Balance: " << account->getBalance() << std::endl;
                 break;
+            }
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
