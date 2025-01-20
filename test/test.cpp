@@ -22,14 +22,16 @@ TEST_CASE("BankAccount class", "[bankaccount],[class]")
 
     bankAccount.deposit(150);
     REQUIRE(bankAccount.getBalance() == 450);
+
+    REQUIRE_THROWS(bankAccount.withdraw(10000));
 }
 
 TEST_CASE("Bank class", "[bank],[class]")
 {
     Bank bank;
-    bankAccount account1(600, 1);
 
-    REQUIRE_NOTHROW(bank.addAccount(1, new bankAccount(account1)));
+    REQUIRE_NOTHROW(bank.addAccount(1, new bankAccount(50, 1000)));
     
     REQUIRE_NOTHROW(bank.getAccount(1));
+    REQUIRE_THROWS(bank.getAccount(-1));
 }
