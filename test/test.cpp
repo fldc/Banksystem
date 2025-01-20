@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include "bankAccount.h"
-#include "BankAccount.hpp" // Will be renamed
+#include "Bank.hpp" // Will be renamed
 
 TEST_CASE("BankAccount class", "[bankaccount],[class]")
 {
@@ -29,7 +29,7 @@ TEST_CASE("Bank class", "[bank],[class]")
     Bank bank;
     bankAccount account1(600, 1);
 
-    REQUIRE_NOTHROW(bank.addAccount(1, account1));
+    REQUIRE_NOTHROW(bank.addAccount(1, new bankAccount(account1)));
     
     REQUIRE_NOTHROW(bank.getAccount(1));
 }

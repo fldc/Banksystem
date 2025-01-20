@@ -21,7 +21,7 @@ void client(Bank& bank, int clientid, int iterations)
         int amount  = amountDist(gen);
         int action  = actionDist(gen);
 
-        auto& account = bank.getAccount(accountNumber);
+        auto account = bank.getAccount(accountNumber);
 
         switch (action)
         {
@@ -29,7 +29,7 @@ void client(Bank& bank, int clientid, int iterations)
                 std::cout << "Customer" << clientid << " Account" << accountNumber
                             << " Deposit: " << amount << std::endl;
                 try {
-                    account.deposit(amount);
+                    account->deposit(amount);
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
@@ -38,14 +38,14 @@ void client(Bank& bank, int clientid, int iterations)
                 std::cout << "Customer" << clientid << " Account" << accountNumber
                             << " Withdraw: " << amount << std::endl;
                 try {
-                    account.withdraw(amount);
+                    account->withdraw(amount);
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
                 break;
             case 3:
                 std::cout << "Customer" << clientid << " Account" << accountNumber
-                            << " Balance: " << account.getBalance() << std::endl;
+                            << " Balance: " << account->getBalance() << std::endl;
                 break;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -59,7 +59,7 @@ int main()
     // Create 5 accounts
     for (int i = 1000; i < 1005; ++i)
     {
-        bank.addAccount(i, 1000);
+        bank.addAccount(i, new bankAccount(1000, i));
     }
 
     std::vector<std::thread> threads;

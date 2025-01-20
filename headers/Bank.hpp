@@ -8,10 +8,12 @@
 class Bank
 {
 private:
-    std::map <int, bankAccount> account;
+    // Ändrade från bankAccount till bankAccount* eftersom annars bygger inte programmet.
+    std::map <int, bankAccount*> account;
 public:
-    int addAccount(int id, bankAccount info);
-    bankAccount& getAccount(int id);
+    void addAccount(int id, bankAccount* info);
+    bankAccount* getAccount(int id);
+    ~Bank();
 };
 
 #endif

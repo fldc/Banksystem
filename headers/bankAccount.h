@@ -2,11 +2,11 @@
 #define BANKACCOUNT_H
 
 class bankAccount {
-    private: 
+private: 
     int balance;
     int accountNumber;
 
-    public: 
+public: 
     bankAccount(int balance, int accountNumber);
     bankAccount(int accountNumber);
     void deposit(int amount);

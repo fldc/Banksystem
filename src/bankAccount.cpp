@@ -1,12 +1,12 @@
 #include "bankAccount.h"
 #include <iostream>
 
-
 bankAccount::bankAccount(int balance, int accountNumber)
 {
     this->balance = balance;
     this->accountNumber = accountNumber;
 }
+
 bankAccount::bankAccount(int accountNumber)
 {
     this->balance = 0;
@@ -15,7 +15,7 @@ bankAccount::bankAccount(int accountNumber)
 
 void bankAccount::deposit(int amount)
 {
-    if(amount == 0)
+    if(amount <= 0)
     {
         throw "Invalid amount";
     }
@@ -29,7 +29,7 @@ void bankAccount::withdraw(int amount)
     {
         throw "Insufficient funds";
     }
-    else if(amount == 0)
+    else if(amount <= 0)
     {
         throw "Invalid amount";
     }
