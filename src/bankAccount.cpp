@@ -15,7 +15,7 @@ bankAccount::bankAccount(int accountNumber)
 
 void bankAccount::deposit(int amount)
 {
-    if(amount == 0)
+    if(amount <= 0)
     {
         throw "Invalid amount";
     }
@@ -29,7 +29,7 @@ void bankAccount::withdraw(int amount)
     {
         throw "Insufficient funds";
     }
-    else if(amount == 0)
+    else if(amount <= 0)
     {
         throw "Invalid amount";
     }
