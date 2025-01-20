@@ -15,6 +15,9 @@ bankAccount::bankAccount(int accountNumber)
     this->accountNumber = accountNumber;
 }
 
+/**
+ * @throws When amount is negative or zero
+ */
 void bankAccount::deposit(int amount)
 {
     std::lock_guard<std::mutex> lock(this->balanceMtx);
@@ -26,6 +29,9 @@ void bankAccount::deposit(int amount)
 
 }
 
+/**
+ * @throws When amount is negative or zero
+ */
 void bankAccount::withdraw(int amount)
 {
     std::lock_guard<std::mutex> lock(this->balanceMtx);

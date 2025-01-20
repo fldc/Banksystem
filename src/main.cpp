@@ -9,6 +9,12 @@
 
 std::mutex mtx, printMtx;
 
+/**
+ * Randomizes deposits and withdrawals and generates random account numbers to perform operations on.
+ * @param bank The bank object
+ * @param clientid The id of the client
+ * @param iterations The number of operations to perform
+ */
 void client(Bank& bank, int clientid, int iterations)
 {
     std::random_device rd;
