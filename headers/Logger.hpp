@@ -4,22 +4,22 @@
 #include <string>
 #include <mutex>
 #include <condition_variable>
+#include <fstream>
 
 /**
  * @brief Singleton to handle logging
  */
 class Logger {
-public:
-    Logger();
-
-    static void info(std::string msg);
-    
-    static const Logger *getInstance();
 private:
-    static Logger *instance;
-
     std::mutex mtx;
     std::condition_variable cv;
+    Logger();
+public:
+    Logger() = delete;
+
+    static void logInfo(time_t timestamp, double accountBalance, double difference);
+    
+    Logger &getInstance();
 };
 
 #endif
