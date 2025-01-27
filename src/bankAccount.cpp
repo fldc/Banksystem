@@ -25,6 +25,7 @@ void bankAccount::deposit(int amount)
     {
         throw "Invalid amount";
     }
+    deposits += amount;
     balance += amount;
 
 }
@@ -43,12 +44,23 @@ void bankAccount::withdraw(int amount)
     {
         throw "Invalid amount";
     }
-    balance -= amount;
 
+    withdraws += amount;
+    balance -= amount;
 }
 
 int bankAccount::getBalance()
 {
     std::lock_guard<std::mutex> lock(this->balanceMtx);
     return balance;
+}
+
+int bankAccount::getWithdraws() {
+    std::lock_guard<std::mutex> lock(this->balanceMtx);
+    return withdraws;
+}
+
+int bankAccount::getDeposits() {
+    std::lock_guard<std::mutex> lock(this->balanceMtx);
+    return deposits;
 }

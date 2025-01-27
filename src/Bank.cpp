@@ -27,3 +27,8 @@ Bank::~Bank()
         value = nullptr;
     }
 }
+
+const std::map<int, bankAccount*> Bank::getAccounts() const noexcept {
+    return this->account;
+}
+

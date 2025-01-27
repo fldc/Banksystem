@@ -5,6 +5,8 @@
 #include <mutex>
 #include <condition_variable>
 #include <fstream>
+#include <map>
+#include "bankAccount.h"
 
 /**
  * @brief Singleton to handle logging
@@ -15,10 +17,9 @@ private:
     std::condition_variable cv;
     Logger();
 public:
-
     static void logInfo(time_t timestamp, double accountBalance, double difference);
-    
-    Logger &getInstance();
+    static void logResults(std::map<int, bankAccount*> accounts);
+    static Logger &getInstance();
 };
 
 #endif
