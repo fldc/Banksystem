@@ -37,6 +37,8 @@ void client(Bank& bank, int clientid, int iterations)
             account = bank.getAccount(accountNumber);
         }
 
+        time_t timestamp = std::time(nullptr); // Generate timestamp 
+
         {
             std::lock_guard<std::mutex> lock(printMtx);
             switch (action)
