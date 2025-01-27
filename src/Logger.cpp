@@ -4,6 +4,13 @@
 Logger::Logger() {
 }
 
+/**
+ * @brief Prints a new entry to the transaction log
+ * 
+ * @param timestamp Timestamp when the transaction was performed
+ * @param accountBalance The balance of the account.
+ * @param difference The transaction size, negative numbers indicates withdrawals.
+ */
 void Logger::logInfo(time_t timestamp, double accountBalance, double difference) {
     std::ofstream file("transaction_log.txt", std::ios::app);
 
@@ -13,6 +20,11 @@ void Logger::logInfo(time_t timestamp, double accountBalance, double difference)
     }
 }
 
+/**
+ * @brief Prints final results to console.
+ * 
+ * @param accounts A map to all accounts to be printed.
+ */
 void Logger::logResults(std::map<int, bankAccount*> accounts) {
     std::cout << "\n--- Transaction report ---\n";
     for (auto [key, value] : accounts) {
