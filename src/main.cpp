@@ -54,7 +54,7 @@ void client(Bank& bank, int clientid, int iterations)
                 try {
                     account->deposit(amount);
 
-                    logger.logInfo(timestamp, account->getBalance(), amount); // Log for depositing
+                    logger.logInfo(account->getId(), timestamp, account->getBalance(), amount); // Log for depositing
 
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
@@ -66,7 +66,7 @@ void client(Bank& bank, int clientid, int iterations)
                 try {
                     account->withdraw(amount);
 
-                    logger.logInfo(timestamp, account->getBalance(), -amount); // Log for withdrawing
+                    logger.logInfo(account->getId(), timestamp, account->getBalance(), -amount); // Log for withdrawing
 
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;

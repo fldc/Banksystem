@@ -64,3 +64,7 @@ int bankAccount::getDeposits() {
     std::lock_guard<std::mutex> lock(this->balanceMtx);
     return deposits;
 }
+
+int bankAccount::getId() {
+    return this->accountNumber;
+}

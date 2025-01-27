@@ -20,6 +20,7 @@ public:
     int getBalance();
     int getWithdraws();
     int getDeposits();
+    int getId();
 };
 
 #endif

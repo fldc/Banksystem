@@ -11,11 +11,11 @@ Logger::Logger() {
  * @param accountBalance The balance of the account.
  * @param difference The transaction size, negative numbers indicates withdrawals.
  */
-void Logger::logInfo(time_t timestamp, double accountBalance, double difference) {
+void Logger::logInfo(int accountId, time_t timestamp, double accountBalance, double difference) {
     std::ofstream file("transaction_log.txt", std::ios::app);
 
     if (file.is_open()) {
-        file << timestamp << "\nTransaction: " << difference << "\n" << "Account balance: " << accountBalance << "\n" << std::endl;
+        file << "Account Number: " << accountId << "\nTime: " << timestamp << "\nTransaction: " << difference << "\n" << "Account balance: " << accountBalance << "\n" << std::endl;
         file.close();
     }
 }

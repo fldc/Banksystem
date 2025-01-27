@@ -17,7 +17,7 @@ private:
     std::condition_variable cv;
     Logger();
 public:
-    static void logInfo(time_t timestamp, double accountBalance, double difference);
+    static void logInfo(int accountId, time_t timestamp, double accountBalance, double difference);
     static void logResults(std::map<int, bankAccount*> accounts);
     static Logger &getInstance();
 };
