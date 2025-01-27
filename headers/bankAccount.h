@@ -6,7 +6,9 @@
 
 class bankAccount {
 private: 
-    int balance, deposits, withdraws;
+    int balance; 
+    int deposits = 0;
+    int withdraws = 0;
     int accountNumber;
 
     std::mutex balanceMtx;
