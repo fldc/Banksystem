@@ -24,6 +24,7 @@ void client(Bank& bank, int clientid, int iterations)
     std::uniform_int_distribution<int> amountDist(10, 100);
     std::uniform_int_distribution<int> actionDist(1, 3);
 
+
     Logger &logger = Logger::getInstance(); // Accessing the "Logger" instance
 
     // random transactions
@@ -52,7 +53,9 @@ void client(Bank& bank, int clientid, int iterations)
                             << " Deposit: " << amount << std::endl;
                 try {
                     account->deposit(amount);
+
                     logger.logInfo(timestamp, account->getBalance(), amount); // Log for depositing
+
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
@@ -62,7 +65,9 @@ void client(Bank& bank, int clientid, int iterations)
                             << " Withdraw: " << amount << std::endl;
                 try {
                     account->withdraw(amount);
+
                     logger.logInfo(timestamp, account->getBalance(), -amount); // Log for withdrawing
+
                 } catch (const std::exception& e) {
                     std::cerr << "Error: " << e.what() << std::endl;
                 }
