@@ -15,8 +15,6 @@ private:
     std::condition_variable cv;
     Logger();
 public:
-    Logger() = delete;
-
     static void logInfo(time_t timestamp, double accountBalance, double difference);
     
     static Logger &getInstance();
