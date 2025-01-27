@@ -19,7 +19,7 @@ public:
 
     static void logInfo(time_t timestamp, double accountBalance, double difference);
     
-    Logger &getInstance();
+    static Logger &getInstance();
 };
 
 #endif
