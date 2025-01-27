@@ -16,13 +16,13 @@ std::mutex mtx, printMtx;
  * @param clientid The id of the client
  * @param iterations The number of operations to perform
  */
-void client(Bank& bank, int clientid, int iterations)
+void client(Bank& bank, const int clientid, const int iterations)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> accountDist(1000, 1004);
-    std::uniform_int_distribution<int> amountDist(10, 100);
-    std::uniform_int_distribution<int> actionDist(1, 3);
+    std::uniform_int_distribution accountDist(1000, 1004);
+    std::uniform_int_distribution amountDist(10, 100);
+    std::uniform_int_distribution actionDist(1, 3);
 
 
     Logger &logger = Logger::getInstance(); // Accessing the "Logger" instance
@@ -30,9 +30,9 @@ void client(Bank& bank, int clientid, int iterations)
     // random transactions
     for (int i = 0; i < iterations; i++)
     {
-        int accountNumber = accountDist(gen);
-        int amount  = amountDist(gen);
-        int action  = actionDist(gen);
+        const int accountNumber = accountDist(gen);
+        const int amount  = amountDist(gen);
+        const int action  = actionDist(gen);
 
         bankAccount *account;
 
@@ -78,7 +78,7 @@ void client(Bank& bank, int clientid, int iterations)
                 break;
             }
         }
-        std::uniform_int_distribution<int> waitTime(100, 3000);
+        std::uniform_int_distribution waitTime(100, 3000);
         std::this_thread::sleep_for(std::chrono::milliseconds(waitTime(gen)));
     }
 }
@@ -94,10 +94,11 @@ int main()
     }
 
     std::vector<std::thread> threads;
+    threads.reserve(10);
     for (int i = 0; i < 10; ++i)
     {
         // Create 10 clients and make 5 transactions each
-        threads.emplace_back(std::thread(client, std::ref(bank), i + 1, 5));
+        threads.emplace_back(client, std::ref(bank), i + 1, 5);
     }
 
     for (auto& t : threads)

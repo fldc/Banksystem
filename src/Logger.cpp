@@ -25,7 +25,7 @@ void Logger::logInfo(int accountId, time_t timestamp, double accountBalance, dou
  * 
  * @param accounts A map to all accounts to be printed.
  */
-void Logger::logResults(std::map<int, bankAccount*> accounts) {
+void Logger::logResults(const std::map<int, bankAccount*>& accounts) {
     std::cout << "\n--- Transaction report ---\n";
     for (auto [key, value] : accounts) {
         std::cout << "\nAccount " << key << 
