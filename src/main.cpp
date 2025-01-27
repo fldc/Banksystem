@@ -100,5 +100,9 @@ int main()
         t.join();
     }
 
+    Logger &logger = Logger::getInstance();
+
+    logger.logResults(bank.getAccounts());
+
     return 0;
 }

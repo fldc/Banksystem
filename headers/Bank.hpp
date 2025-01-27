@@ -13,6 +13,8 @@ private:
     std::map <int, bankAccount*> account;
     std::mutex mapMtx;
 public:
+    const std::map<int, bankAccount*> getAccounts() const noexcept;
+
     void addAccount(int id, bankAccount* info);
     bankAccount* getAccount(int id);
     ~Bank();
