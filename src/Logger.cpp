@@ -1,14 +1,15 @@
 #include "Logger.hpp"
 
-Logger::Logger() : mtx(mtx), cv(cv);
+Logger::Logger() {
+}
 
-static void logInfo(time_t timestamp, double accountBalance, double difference) {
+void Logger::logInfo(time_t timestamp, double accountBalance, double difference) {
     std::ofstream file("transaction_log.txt", std::ios::app);
 
     file << timestamp << "\nTransaction: " << difference << "\n" << "Account balance: " << accountBalance << "\n" << std::endl;
 }
 
-static Logger *const getInstance() {
-    static Logger *instance;
+Logger &Logger::getInstance() {
+    static Logger instance;
     return instance;
 }

@@ -13,12 +13,13 @@ class Logger {
 private:
     std::mutex mtx;
     std::condition_variable cv;
-public:
     Logger();
+public:
+    Logger() = delete;
 
     static void logInfo(time_t timestamp, double accountBalance, double difference);
     
-    static Logger *const getInstance();
+    Logger &getInstance();
 };
 
 #endif
