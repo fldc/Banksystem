@@ -17,9 +17,9 @@ public:
     explicit BankAccount(int accountNumber);
     void deposit(int amount);
     void withdraw(int amount);
-    int getBalance() const;
-    int getWithdraws() const;
-    int getDeposits() const;
+    int getBalance();
+    int getWithdraws();
+    int getDeposits();
     int getId() const;
 };
 

@@ -1,16 +1,15 @@
-#include "bankAccount.h"
-#include <iostream>
+#include "bankaccount.h"
 
 BankAccount::BankAccount(const int balance, const int accountNumber)
 {
-    std::lock_guard lock(this->balanceMtx);
+    std::lock_guard<std::mutex> lock(this->balanceMtx);
     this->balance = balance;
     this->accountNumber = accountNumber;
 }
 
 BankAccount::BankAccount(const int accountNumber)
 {
-    std::lock_guard lock(this->balanceMtx);
+    std::lock_guard<std::mutex> lock(this->balanceMtx);
     this->balance = 0;
     this->accountNumber = accountNumber;
 }
@@ -48,19 +47,19 @@ void BankAccount::withdraw(int amount)
     balance -= amount;
 }
 
-int BankAccount::getBalance() const
+int BankAccount::getBalance()
 {
     std::lock_guard lock(this->balanceMtx);
     return balance;
 }
 
-int BankAccount::getWithdraws() const
+int BankAccount::getWithdraws()
 {
     std::lock_guard lock(this->balanceMtx);
     return withdraws;
 }
 
-int BankAccount::getDeposits() const
+int BankAccount::getDeposits()
 {
     std::lock_guard lock(this->balanceMtx);
     return deposits;
